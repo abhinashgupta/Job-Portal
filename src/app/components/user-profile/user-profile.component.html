@@ -1,0 +1,121 @@
+<div class="user-profile-container" *ngIf="userProfile">
+  <h2>User Profile</h2>
+  <div class="profile-section" *ngIf="!editMode">
+    <div class="profile-header">
+      <div class="profile-picture">
+        <img [src]="getProfilePictureUrl(userProfile.profilePicture)" alt="Profile Picture" *ngIf="userProfile.profilePicture">
+      </div>
+      <div class="info">
+        <p><strong>Username:</strong> {{ userProfile.username }}</p>
+        <p><strong>Email:</strong> {{ userProfile.email }}</p>
+        <p><strong>Role:</strong> {{ userProfile.role }}</p>
+      </div>
+    </div>
+
+    <div class="details">
+      <div class="section">
+        <p class="section-title"><strong>Education</strong></p>
+        <ul>
+          <li *ngFor="let edu of userProfile.education">
+            <p><strong>Degree:</strong> {{ edu.degree }}</p>
+            <p><strong>University:</strong> {{ edu.university }}</p>
+            <p><strong>Year:</strong> {{ edu.year }}</p>
+          </li>
+          <li *ngIf="userProfile.education.length === 0">No education records</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <p class="section-title"><strong>Work Experience</strong></p>
+        <ul>
+          <li *ngFor="let work of userProfile.workExperience">
+            <p><strong>Title:</strong> {{ work.title }}</p>
+            <p><strong>Company:</strong> {{ work.company }}</p>
+            <p><strong>Start Date:</strong> {{ work.startDate }}</p>
+            <p><strong>End Date:</strong> {{ work.endDate }}</p>
+            <p><strong>Description:</strong> {{ work.description }}</p>
+          </li>
+          <li *ngIf="userProfile.workExperience.length === 0">No work experience records</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <p class="section-title"><strong>Skills</strong></p>
+        <ul>
+          <li *ngFor="let skill of userProfile.skills">{{ skill }}</li>
+          <li *ngIf="userProfile.skills.length === 0">No skills listed</li>
+        </ul>
+      </div>
+    </div>
+
+    <button class="edit-btn" (click)="toggleEditMode()">Edit</button>
+  </div>
+
+  <div class="edit-mode-container" *ngIf="editMode">
+    <form (ngSubmit)="saveProfile()">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input id="username" type="text" [(ngModel)]="userProfile.username" name="username" placeholder="Username" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input id="email" type="email" [(ngModel)]="userProfile.email" name="email" placeholder="Email" />
+      </div>
+      <div class="form-group">
+        <label for="role">Role:</label>
+        <input id="role" type="text" [(ngModel)]="userProfile.role" name="role" placeholder="Role" />
+      </div>
+
+      <div class="form-group">
+        <label for="profilePicture">Profile Picture:</label>
+        <input id="profilePicture" type="file" (change)="onFileSelected($event)" />
+      </div>
+
+      <div class="form-group">
+        <label>Education:</label>
+        <div *ngFor="let edu of userProfile.education; let i = index" class="nested-form-group">
+          <label for="degree-{{i}}">Degree:</label>
+          <input id="degree-{{i}}" type="text" [(ngModel)]="edu.degree" name="degree-{{i}}" placeholder="Degree" />
+          <label for="university-{{i}}">University:</label>
+          <input id="university-{{i}}" type="text" [(ngModel)]="edu.university" name="university-{{i}}" placeholder="University" />
+          <label for="year-{{i}}">Year:</label>
+          <input id="year-{{i}}" type="text" [(ngModel)]="edu.year" name="year-{{i}}" placeholder="Year" />
+          <button type="button" (click)="removeEducation(i)">Remove</button>
+        </div>
+        <button type="button" (click)="addEducation()">Add Education</button>
+      </div>
+
+      <div class="form-group">
+        <label>Work Experience:</label>
+        <div *ngFor="let work of userProfile.workExperience; let i = index" class="nested-form-group">
+          <label for="title-{{i}}">Title:</label>
+          <input id="title-{{i}}" type="text" [(ngModel)]="work.title" name="title-{{i}}" placeholder="Title" />
+          <label for="company-{{i}}">Company:</label>
+          <input id="company-{{i}}" type="text" [(ngModel)]="work.company" name="company-{{i}}" placeholder="Company" />
+          <label for="startDate-{{i}}">Start Date:</label>
+          <input id="startDate-{{i}}" type="text" [(ngModel)]="work.startDate" name="startDate-{{i}}" placeholder="Start Date" />
+          <label for="endDate-{{i}}">End Date:</label>
+          <input id="endDate-{{i}}" type="text" [(ngModel)]="work.endDate" name="endDate-{{i}}" placeholder="End Date" />
+          <label for="description-{{i}}">Description:</label>
+          <input id="description-{{i}}" type="text" [(ngModel)]="work.description" name="description-{{i}}" placeholder="Description" />
+          <button type="button" (click)="removeWorkExperience(i)">Remove</button>
+        </div>
+        <button type="button" (click)="addWorkExperience()">Add Work Experience</button>
+      </div>
+
+      <div class="form-group">
+        <label>Skills:</label>
+        <div *ngFor="let skill of userProfile.skills; let i = index" class="nested-form-group">
+          <input id="skill-{{i}}" type="text" [(ngModel)]="userProfile.skills[i]" name="skill-{{i}}" placeholder="Skill" />
+          <button type="button" (click)="removeSkill(i)">Remove</button>
+        </div>
+        <button type="button" (click)="addSkill()">Add Skill</button>
+      </div>
+
+      <div class="button-group">
+        <button class="save-btn" type="submit">Save</button>
+        <button class="cancel-btn" type="button" (click)="toggleEditMode()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

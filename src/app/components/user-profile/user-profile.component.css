@@ -1,0 +1,131 @@
+.user-profile-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: #333;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-picture img {
+  max-width: 150px;
+  border-radius: 50%;
+  border: 2px solid #007bff;
+}
+
+.info p {
+  margin: 0;
+  padding: 5px 0;
+}
+
+.details .section {
+  margin-top: 20px;
+}
+
+.details .section-title {
+  font-size: 1.2em;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.details ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.details li {
+  margin-bottom: 10px;
+}
+
+.details li p {
+  margin: 0;
+  padding: 5px 0;
+}
+
+.edit-mode-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group, .nested-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group label, .nested-form-group label {
+  font-weight: bold;
+}
+
+.form-group input, .nested-form-group input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.save-btn, .cancel-btn, .edit-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.save-btn:hover, .cancel-btn:hover, .edit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .user-profile-container {
+    padding: 10px;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-picture img {
+    max-width: 100px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .save-btn, .cancel-btn, .edit-btn {
+    width: 100%;
+  }
+}

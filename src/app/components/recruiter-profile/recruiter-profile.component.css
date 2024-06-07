@@ -1,0 +1,131 @@
+.recruiter-profile {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.5em;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.search-form .form-group {
+  margin-bottom: 15px;
+}
+
+.search-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.search-form input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.search-form .search-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-form .search-btn:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.profile-list {
+  list-style: none;
+  padding: 0;
+}
+
+.profile-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease;
+}
+
+.profile-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-item h4 {
+  margin-top: 0;
+  font-size: 1.3em;
+  color: #007bff;
+}
+
+.profile-item p {
+  margin: 5px 0;
+}
+
+.profile-item p strong {
+  color: #333;
+}
+
+.experience-list, .education-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience-list li, .education-list li {
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .search-form .form-group {
+    margin-bottom: 10px;
+  }
+
+  .search-form input {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+
+  .search-form .search-btn {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+
+  .profile-item {
+    padding: 15px;
+  }
+
+  .profile-item h4 {
+    font-size: 1.2em;
+  }
+}

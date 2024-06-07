@@ -1,0 +1,45 @@
+<div class="recruiter-profile">
+  <h2>Job Seekers Profile</h2>
+  <form (ngSubmit)="searchJobSeekers()" class="search-form">
+    <div class="form-group">
+      <label for="skills">Skills:</label>
+      <input type="text" id="skills" [(ngModel)]="searchCriteria.skills" name="skills" placeholder="Enter skills">
+    </div>
+
+    <div class="form-group">
+      <label for="experience">Experience (in years):</label>
+      <input type="number" id="experience" [(ngModel)]="searchCriteria.experience" name="experience" placeholder="Enter experience">
+    </div>
+
+    <div class="form-group">
+      <label for="education">Education:</label>
+      <input type="text" id="education" [(ngModel)]="searchCriteria.education" name="education" placeholder="Enter education">
+    </div>
+
+    <button type="submit" class="search-btn">Search</button>
+  </form>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="jobSeekerProfiles.length">
+    <h3>Matching Job Seekers</h3>
+    <ul class="profile-list">
+      <li *ngFor="let profile of jobSeekerProfiles" class="profile-item">
+        <h4>{{ profile.username }}</h4>
+        <p><strong>Skills:</strong> {{ profile.skills.join(', ') }}</p>
+        <p><strong>Experience:</strong></p>
+        <ul class="experience-list">
+          <li *ngFor="let exp of profile.workExperience">
+            {{ exp.title }} at {{ exp.company }} ({{ exp.startDate | date:'yyyy-MM-dd' }} - {{ exp.endDate | date:'yyyy-MM-dd' }}): {{ exp.description }}
+          </li>
+        </ul>
+        <p><strong>Education:</strong></p>
+        <ul class="education-list">
+          <li *ngFor="let edu of profile.education">
+            {{ edu.degree }} from {{ edu.university }} ({{ edu.year }})
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

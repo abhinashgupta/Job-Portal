@@ -1,0 +1,23 @@
+<div class="job-listings-container">
+  <h2>Job Listings</h2>
+  <div class="search-filters">
+    <input type="text" [(ngModel)]="searchKeyword" (input)="filterJobListings()" placeholder="Search by keyword" />
+    <input type="text" [(ngModel)]="searchLocation" (input)="filterJobListings()" placeholder="Search by location" />
+    <input type="text" [(ngModel)]="searchIndustry" (input)="filterJobListings()" placeholder="Search by industry" />
+    <input type="text" [(ngModel)]="searchType" (input)="filterJobListings()" placeholder="Search by job type" />
+  </div>
+
+  <ul class="job-list">
+    <li class="job-item" *ngFor="let job of filteredJobListings">
+      <h3>{{ job.title }}</h3>
+      <p><strong>Company:</strong> {{ job.company }}</p>
+      <p><strong>Location:</strong> {{ job.location }}</p>
+      <p><strong>Description:</strong> {{ job.description }}</p>
+      <p><strong>Requirements:</strong> {{ job.requirements }}</p>
+      <p><strong>Type:</strong> {{ job.type }}</p>
+      <p><strong>Industry:</strong> {{ job.industry }}</p>
+      <p><strong>Posted Date:</strong> {{ job.postedDate }}</p>
+    </li>
+  </ul>
+</div>
+

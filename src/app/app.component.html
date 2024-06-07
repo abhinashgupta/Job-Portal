@@ -1,0 +1,13 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <a class="nav-link" routerLink="/login" *ngIf="!currentUser">Login</a>
+    <a class="nav-link" routerLink="/register" *ngIf="!currentUser">Register</a>
+    <a class="nav-link" routerLink="/profile" *ngIf="isJobSeeker()">Profile</a>
+    <a class="nav-link" routerLink="/job-listings" *ngIf="isJobSeeker()">Job Listings</a>
+    <a class="nav-link" routerLink="/recruiter-profile" *ngIf="isRecruiter()">Job Seekers Profiles</a>
+    <a class="nav-link" routerLink="/recruiter-dashboard" *ngIf="isRecruiter()">Recruiter Dashboard</a>
+    <button class="logout-btn" (click)="logout()" *ngIf="currentUser">Logout</button>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,60 @@
+<div class="recruiter-dashboard">
+  <h2>Recruiter Dashboard</h2>
+
+  <h3>Post a Job</h3>
+  <form (submit)="postJob()" class="job-post-form">
+    <div class="form-group">
+      <label for="title">Job Title:</label>
+      <input type="text" id="title" [(ngModel)]="newJob.title" name="title" required>
+    </div>
+
+    <div class="form-group">
+      <label for="company">Company:</label>
+      <input type="text" id="company" [(ngModel)]="newJob.company" name="company" required>
+    </div>
+
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input type="text" id="location" [(ngModel)]="newJob.location" name="location" required>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" [(ngModel)]="newJob.description" name="description" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="requirements">Requirements:</label>
+      <textarea id="requirements" [(ngModel)]="newJob.requirements" name="requirements" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="type">Job Type:</label>
+      <input type="text" id="type" [(ngModel)]="newJob.type" name="type" required>
+    </div>
+
+    <div class="form-group">
+      <label for="industry">Industry:</label>
+      <input type="text" id="industry" [(ngModel)]="newJob.industry" name="industry" required>
+    </div>
+
+    <button type="submit" class="post-job-btn">Post Job</button>
+  </form>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <h3>Posted Jobs</h3>
+  <ul class="job-list">
+    <li class="job-item" *ngFor="let job of jobListings">
+      <h4>{{ job.title }}</h4>
+      <p><strong>Company:</strong> {{ job.company }}</p>
+      <p><strong>Location:</strong> {{ job.location }}</p>
+      <p><strong>Description:</strong> {{ job.description }}</p>
+      <p><strong>Requirements:</strong> {{ job.requirements }}</p>
+      <p><strong>Type:</strong> {{ job.type }}</p>
+      <p><strong>Industry:</strong> {{ job.industry }}</p>
+      <p><strong>Posted Date:</strong> {{ job.postedDate }}</p>
+    </li>
+  </ul>
+</div>
+
